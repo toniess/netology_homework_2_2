@@ -1,6 +1,6 @@
 #include <iostream>
 
-enum Months
+enum class Months
 {
 	January = 1,
 	February,
@@ -24,7 +24,7 @@ int main()
 	{
 		std::cout << "Введите номер месяца: ";
 		std::cin >> n;
-		switch ( n )
+		switch ( static_cast<Months>(n) )
 		{
 			case Months::January:
 				std::cout << "Январь" << '\n';
@@ -74,13 +74,13 @@ int main()
 				std::cout << "Декабрь" << '\n';
 				break;
 
-			case 0:
-				std::cout << "До свидания!" << '\n';
-				return 0;
-
 			default:
+				if (n == 0)
+				{
+					std::cout << "До свидания!" << '\n';
+					return 0;
+				}
 				std::cout << "Неправильный номер" << '\n';
-				break;
 		}
 	}
 }
